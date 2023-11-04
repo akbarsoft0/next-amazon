@@ -57,7 +57,9 @@ export const nextSlice = createSlice({
       }
     },
     deleteProduct: (state, action) => {
-      state.productData.filter((p) => p._id !== action.payload._id);
+      state.productData = state.productData.filter(
+        (p) => p._id !== action.payload
+      );
     },
     resetCart: (state) => {
       state.productData = [];

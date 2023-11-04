@@ -4,7 +4,6 @@ import { addToCart } from "@redux/nextSlice";
 import { useDispatch } from "react-redux";
 
 const AddToCart = ({ p }: any) => {
-  p.quantity = 1;
   const dispatch = useDispatch();
   return (
     <button

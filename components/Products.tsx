@@ -1,34 +1,22 @@
-// "use client";
-// import React, { useEffect, useState } from "react";
-
 import Image from "next/image";
 import FormattedPrice from "./FormattedPrice";
-import { useDispatch } from "react-redux";
-import { addToCart } from "@redux/nextSlice";
 import AddToCart from "./AddToCart";
 import IconBox from "./IconBox";
+import { ProductProps } from "@type";
+
+interface State {
+  item: object;
+  quantity: number;
+}
 
 const products = async () => {
   const res = await fetch("https://fakestoreapiserver.reactbd.com/tech");
-  const productData = await res.json();
-
-  // const [product, setProduct] = useState([]);
-  // // SSR for data fetching
-  // const getProducts = async () => {
-  //   const res = await fetch("https://fakestoreapiserver.reactbd.com/tech");
-  //   const productData = await res.json();
-  //   setProduct(productData);
-  // };
-
-  // useEffect(() => {
-  //   getProducts();
-  // }, []);
-
-  console.log(productData);
+  const data = await res.json();
+  data.forEach((item: State) => (item.quantity = 1));
 
   return (
     <div className="px-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 p-4 gap-6">
-      {productData.map((e: any) => (
+      {data.map((e: ProductProps) => (
         <div
           key={e._id}
           className="bg-white text-black border border-gray-300 rounded-lg group"
