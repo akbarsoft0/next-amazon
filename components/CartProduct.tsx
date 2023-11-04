@@ -1,11 +1,9 @@
 "use client";
 import { ProductProps } from "@type";
 import Image from "next/image";
-import { it } from "node:test";
 import React from "react";
 import { LuMinus, LuPlus } from "react-icons/lu";
 import { IoMdClose } from "react-icons/io";
-
 import FormattedPrice from "./FormattedPrice";
 import { useDispatch } from "react-redux";
 import {

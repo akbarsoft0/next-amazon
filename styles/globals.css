@@ -6,3 +6,21 @@
 .select-none {
     user-select: none;
 }
+
+.center,
+.between {
+    display: flex;
+    align-items: center;
+}
+
+.center {
+    justify-content: center;
+}
+
+.between {
+    justify-content: space-between;
+}
+
+img {
+    filter: drop-shadow(12px 5px 10px #919191);
+}

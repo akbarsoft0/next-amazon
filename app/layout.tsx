@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import "@styles/globals.css";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Header from "@components/Header";
 import BottomHeader from "@components/BottomHeader";
 import Footer from "@components/Footer";
 import { Providers } from "@redux/Provider";
-// import "react-responsive-carousel/lib/styles/carousel.min.css";
+import type { AppProps } from "next/app";
 
 export const metadata: Metadata = {
   title: "Create Next App",

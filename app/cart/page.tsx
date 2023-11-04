@@ -4,6 +4,8 @@ import ResetCart from "@components/ResetCart";
 import { ProductProps, StateProps } from "@type";
 import React from "react";
 import { useSelector } from "react-redux";
+import Link from "next/link";
+import CartPayment from "@components/CartPayment";
 
 const Cart = () => {
   const { productData } = useSelector((state: StateProps) => state.next);
@@ -30,11 +32,20 @@ const Cart = () => {
             ))}
             <ResetCart />
           </div>
+          <div className="bg-white h-64 center flex-col p-5 rounded-lg shadow-lg ">
+            <CartPayment />
+          </div>
         </>
       ) : (
-        <div>
-          <h1>your cart is empty</h1>
-          <button>go to shopping</button>
+        <div className="bg-white h-64 col-span-5 center flex-col py-5 rounded-lg shadow-lg ">
+          <h1 className="text-lg font-medium mb-1 capitalize">
+            your cart is empty
+          </h1>
+          <Link href={"/"}>
+            <button className="w-52 h-10 capitalize bg-a_blue text-white rounded text-sm font-semibold hover:bg-a_yellow hover:text-a_blue duration-300">
+              go to shopping
+            </button>
+          </Link>
         </div>
       )}
     </section>

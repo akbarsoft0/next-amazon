@@ -23,6 +23,7 @@ const products = async () => {
         >
           <div className="w-full h-[280px] relative overflow-hidden">
             <Image
+              priority
               src={e.image}
               alt="Product Image"
               width={300}

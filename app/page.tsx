@@ -6,9 +6,9 @@ export default function Home() {
     <main>
       <div className="max-w-screen-2xl mx-auto">
         <Banner />
-      </div>
-      <div className="relative max-w-screen-2xl mx-auto ">
-        <Products />
+        <div className="relative md:-mt-20 lgl:-mt-32 xl:-mt-60 z-22 mb-10">
+          <Products />
+        </div>
       </div>
     </main>
   );
