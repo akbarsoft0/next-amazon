@@ -3,9 +3,12 @@ import FormattedPrice from "./FormattedPrice";
 import { useSelector } from "react-redux";
 import { StateProps, ProductProps } from "@type";
 import { useEffect, useState } from "react";
+import { useSession, signIn } from "next-auth/react";
 
 const CartPayment = () => {
-  const { productData } = useSelector((state: StateProps) => state.next);
+  const { productData, userInfo } = useSelector(
+    (state: StateProps) => state.next
+  );
   const [total, setTotal] = useState(0);
   useEffect(() => {
     let amt = 0;
@@ -32,14 +35,25 @@ const CartPayment = () => {
           <FormattedPrice amount={total} />
         </span>
       </p>
-      <div className="center flex-col">
-        <button className="w-52 h-10 m-auto capitalize bg-a_blue bg-opacity-50 text-white rounded text-sm font-semibold duration-300 hover:cursor-not-allowed">
-          proceed to buy
-        </button>
-        <button className="text-xs mt-2 text-red-500 font-semibold animate-bounce">
-          please login
-        </button>
-      </div>
+      {userInfo ? (
+        <div className="center flex-col">
+          <button className="w-52 h-10 m-auto capitalize text-white rounded text-sm font-semibold duration-300 bg-a_blue hover:bg-a_yellow">
+            proceed to buy
+          </button>
+        </div>
+      ) : (
+        <div className="center flex-col">
+          <button className="w-52 h-10 m-auto capitalize bg-a_blue bg-opacity-50 text-white rounded text-sm font-semibold duration-300 hover:cursor-not-allowed">
+            proceed to buy
+          </button>
+          <button
+            onClick={() => signIn()}
+            className="text-xs capitalize mt-2 text-red-500 font-semibold animate-bounce"
+          >
+            please login..
+          </button>
+        </div>
+      )}
     </div>
   );
 };

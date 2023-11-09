@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import logo from "@public/assets/icons/logo.png";
 import cart from "@public/assets/icons/cartIcon.png";
 import Image from "next/image";
@@ -7,12 +7,30 @@ import { FaLocationDot } from "react-icons/fa6";
 import { HiOutlineSearch } from "react-icons/hi";
 import { AiFillCaretDown } from "react-icons/ai";
 import Link from "next/link";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { StateProps } from "@type";
-("@type");
+import { useSession, signIn } from "next-auth/react";
+import { addUser } from "@redux/nextSlice";
 
 const Header = () => {
-  const { productData, favoriteData } = useSelector((e: StateProps) => e.next);
+  const { data: session } = useSession();
+  console.log(session);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (session) {
+      dispatch(
+        addUser({
+          name: session?.user?.name,
+          email: session?.user?.email,
+          image: session?.user?.image,
+        })
+      );
+    }
+  }, [session]);
+  const { productData, favoriteData, userInfo } = useSelector(
+    (e: StateProps) => e.next
+  );
+  console.log(userInfo);
   return (
     <header className="h-20 bg-a_blue text-lightText sticky top-0 z-50 flex items-center mdl:gap-3 justify-evenly">
       {/* logo */}
@@ -42,15 +60,33 @@ const Header = () => {
         </span>
       </div>
       {/* sign in */}
-      <div className="text-xs capitalize p-2 border border-transparent hover:border-white  cursor-pointer">
-        <p>Hello, sign in</p>
-        <p className="text-white flex items-center">
-          acounts & lists{"  "}
-          <span>
-            <AiFillCaretDown />
-          </span>
-        </p>
-      </div>
+      {userInfo ? (
+        <div className="between text-xs capitalize p-2 border border-transparent hover:border-white  cursor-pointer">
+          <img
+            src={userInfo.image}
+            alt="user"
+            className="w-8 h-8 rounded-full"
+          />
+          <div className="text-xs text-gray-100 ">
+            <h3 className="text-white font-bold">{userInfo.name}</h3>
+            <h4>{userInfo.email}</h4>
+          </div>
+        </div>
+      ) : (
+        <div
+          onClick={() => signIn()}
+          className="text-xs capitalize p-2 border border-transparent hover:border-white  cursor-pointer"
+        >
+          <p>Hello, sign in</p>
+          <p className="text-white flex items-center">
+            acounts & lists{"  "}
+            <span>
+              <AiFillCaretDown />
+            </span>
+          </p>
+        </div>
+      )}
+
       {/* favorite */}
       <Link
         href={"/favorite"}

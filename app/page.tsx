@@ -1,5 +1,5 @@
-import Banner from "@components/Banner";
-import Products from "@components/Products";
+import Banner from "@components/layout/Banner";
+import Products from "@components/homeProducts/Products";
 
 export default function Home() {
   return (

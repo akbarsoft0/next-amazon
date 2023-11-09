@@ -1,5 +1,5 @@
 "use client";
-import products from "@components/Products";
+import products from "@components/homeProducts/Products";
 import { createSlice } from "@reduxjs/toolkit";
 import { ProductProps } from "@type";
 
@@ -83,6 +83,7 @@ export const {
   decreaseQuantity,
   deleteProduct,
   resetCart,
+  removeUser,
   addUser,
   allProducts,
 } = nextSlice.actions;
