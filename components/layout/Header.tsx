@@ -32,7 +32,7 @@ const Header = () => {
   );
   console.log(userInfo);
   return (
-    <header className="h-20 bg-a_blue text-lightText sticky top-0 z-50 flex items-center mdl:gap-3 justify-evenly">
+    <header className="hidden lg:flex h-20 bg-a_blue text-lightText sticky top-0 z-50 items-center mdl:gap-3 justify-evenly">
       {/* logo */}
       <Link
         href={"/"}

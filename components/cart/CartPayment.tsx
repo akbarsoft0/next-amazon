@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { StateProps, ProductProps } from "@type";
 import { useEffect, useState } from "react";
 import { useSession, signIn } from "next-auth/react";
+import { loadStripe } from "@stripe/stripe-js";
 
 const CartPayment = () => {
   const { productData, userInfo } = useSelector(
@@ -18,6 +19,38 @@ const CartPayment = () => {
     });
     setTotal(amt);
   }, [productData]);
+
+  // payment method
+  const stripePromise = loadStripe(
+    process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
+  );
+  const { data: session } = useSession();
+
+  const handleCheckout = async () => {
+    const stripe = await stripePromise;
+    const res = await fetch("/api/checkout", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        items: productData,
+        email: session?.user?.email,
+      }),
+    });
+
+    const checkoutSessions = await res.json();
+
+    //redirect to user to stripe checkout
+    const result = await stripe?.redirectToCheckout({
+      sessionId: checkoutSessions.Id,
+    });
+
+    if (result?.error) {
+      alert(result.error.message);
+    }
+  };
+
   return (
     <div className="flex flex-col gap-4">
       <div className="flex gap-2">
@@ -37,7 +70,10 @@ const CartPayment = () => {
       </p>
       {userInfo ? (
         <div className="center flex-col">
-          <button className="w-52 h-10 m-auto capitalize text-white rounded text-sm font-semibold duration-300 bg-a_blue hover:bg-a_yellow">
+          <button
+            onClick={handleCheckout}
+            className="w-52 h-10 m-auto capitalize text-white rounded text-sm font-semibold duration-300 bg-a_blue hover:bg-a_yellow"
+          >
             proceed to buy
           </button>
         </div>

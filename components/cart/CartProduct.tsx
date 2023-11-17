@@ -19,7 +19,7 @@ const CartProduct = ({ item }: CartProductProps) => {
   const dispatch = useDispatch();
 
   return (
-    <div className="flex items-center gap-2 px-2">
+    <div className="md:flex items-center gap-2 px-2">
       <Image width={150} height={150} src={item.image} alt="productImage" />
       <div>
         <h2 className="uppercase font-semibold text-a_blue">{item.title}</h2>

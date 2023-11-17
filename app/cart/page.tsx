@@ -10,7 +10,7 @@ import CartPayment from "@components/cart/CartPayment";
 const Cart = () => {
   const { productData } = useSelector((state: StateProps) => state.next);
   return (
-    <section className="max-w-screen-2xl mx-auto px-6 grid grid-cols-5 gap-10 py-4 ">
+    <section className="max-w-screen-2xl mx-auto px-6 grid lg:grid-cols-5 gap-10 py-4 ">
       {productData.length > 0 ? (
         <>
           <div className="bg-white col-span-4 p-4 rounded-lg">
@@ -25,7 +25,7 @@ const Cart = () => {
             {productData.map((item: ProductProps) => (
               <div
                 key={item._id}
-                className="bg-gray-100 rounded-lg flex items-center mt-3 gap-4"
+                className="bg-gray-100 rounded-lg flex lg:flex-row flex-col items-center mt-3 gap-4"
               >
                 <CartProduct item={item} />
               </div>

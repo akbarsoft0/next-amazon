@@ -36,7 +36,7 @@ const BottomHeader = () => {
       {userInfo && (
         <button
           onClick={handleSignOut}
-          className="hidden md:inline-flex items-center capitalize h-8 px-2 border border-transparent hover:border-red-600 text-a_yellow hover:text-red-400 cursor-pointer duration-300"
+          className="flex items-center capitalize h-8 px-2 border border-transparent hover:border-red-600 text-a_yellow hover:text-red-400 cursor-pointer duration-300"
         >
           sign out
         </button>
