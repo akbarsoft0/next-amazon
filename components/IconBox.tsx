@@ -6,7 +6,6 @@ import { addToCart, addToFavorite } from "@redux/nextSlice";
 import { useDispatch } from "react-redux";
 
 const IconBox = ({ p }: any) => {
-  p.quantity = 1;
   const dispatch = useDispatch();
   return (
     <div className="w-12 h-24 absolute bottom-10 right-2 border-[1px] border-gray-400 bg-white rounded-md flex flex-col translate-x-20 group-hover:translate-x-0 transition-transform duration-300">

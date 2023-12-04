@@ -14,7 +14,6 @@ import { addUser } from "@redux/nextSlice";
 
 const Header = () => {
   const { data: session } = useSession();
-  console.log(session);
   const dispatch = useDispatch();
   useEffect(() => {
     if (session) {
@@ -30,7 +29,6 @@ const Header = () => {
   const { productData, favoriteData, userInfo } = useSelector(
     (e: StateProps) => e.next
   );
-  console.log(userInfo);
   return (
     <header className="hidden lg:flex h-20 bg-a_blue text-lightText sticky top-0 z-50 items-center mdl:gap-3 justify-evenly">
       {/* logo */}

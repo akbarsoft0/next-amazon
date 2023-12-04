@@ -1,5 +1,5 @@
 import Banner from "@components/layout/Banner";
-import Products from "@components/homeProducts/Products";
+import Products from "@components/Products";
 
 export default function Home() {
   return (

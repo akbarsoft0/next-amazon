@@ -3,7 +3,7 @@ import "@styles/globals.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Header from "@components/layout/Header";
 import MobHeader from "@components/layout/MobHeader";
-import BottomHeader from "@components/layout/BottomHeader";
+import BottomHeader from "@components/BottomHeader";
 import Footer from "@components/layout/Footer";
 import { Providers } from "@providers/Provider";
 

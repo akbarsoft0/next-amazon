@@ -8,7 +8,7 @@ const AddToCart = ({ p }: any) => {
   return (
     <button
       onClick={() => dispatch(addToCart(p))}
-      className="h-10 font-medium bg-a_blue text-white rounded-md hover:bg-a_yellow hover:text-black duration-300 mt-2"
+      className="h-10 min-w-[150px] capitalize font-medium bg-a_blue text-white rounded-md hover:bg-a_yellow hover:text-black duration-300 mt-2"
     >
       add to cart
     </button>

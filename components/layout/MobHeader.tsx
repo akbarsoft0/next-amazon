@@ -1,7 +1,6 @@
 "use client";
 import logo from "@public/assets/icons/logo.png";
 import cart from "@public/assets/icons/cartIcon.png";
-import { MdOutlineShoppingCart } from "react-icons/md";
 import { FaUser, FaRegHeart } from "react-icons/fa";
 import { LuMenu } from "react-icons/lu";
 import { HiOutlineSearch } from "react-icons/hi";
@@ -16,7 +15,6 @@ import { useEffect } from "react";
 
 const MobHeader = () => {
   const { data: session } = useSession();
-  console.log(session);
   const dispatch = useDispatch();
   useEffect(() => {
     if (session) {
@@ -32,7 +30,6 @@ const MobHeader = () => {
   const { productData, favoriteData, userInfo } = useSelector(
     (e: StateProps) => e.next
   );
-  console.log(userInfo);
   return (
     <header className="lg:hidden p-2 bg-a_blue text-white text-lg">
       <div className="between">
@@ -40,9 +37,9 @@ const MobHeader = () => {
           <div className="p-2 hover:scale-125 cursor-pointer">
             <LuMenu />
           </div>
-          <div className="ps-2 cursor-pointer">
+          <Link href="/" className="ps-2 cursor-pointer">
             <Image src={logo} alt="logo" height={25} />
-          </div>
+          </Link>
         </div>
         <ul className="center gap-3">
           {userInfo ? (

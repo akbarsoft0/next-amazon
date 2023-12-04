@@ -1,6 +1,6 @@
 import Image from "next/image";
-import FormattedPrice from "../cart/FormattedPrice";
-import AddToCart from "../cart/AddToCart";
+import FormattedPrice from "./FormattedPrice";
+import AddToCart from "./AddToCart";
 import IconBox from "./IconBox";
 import { ProductProps } from "@type";
 

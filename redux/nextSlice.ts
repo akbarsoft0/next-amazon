@@ -1,5 +1,4 @@
 "use client";
-import products from "@components/homeProducts/Products";
 import { createSlice } from "@reduxjs/toolkit";
 import { ProductProps } from "@type";
 
@@ -61,8 +60,16 @@ export const nextSlice = createSlice({
         (p) => p._id !== action.payload
       );
     },
+    deleteFav: (state, action) => {
+      state.favoriteData = state.favoriteData.filter(
+        (p) => p._id !== action.payload
+      );
+    },
     resetCart: (state) => {
       state.productData = [];
+    },
+    resetFav: (state) => {
+      state.favoriteData = [];
     },
     addUser: (state, action) => {
       state.userInfo = action.payload;
@@ -82,7 +89,9 @@ export const {
   increaseQuantity,
   decreaseQuantity,
   deleteProduct,
+  deleteFav,
   resetCart,
+  resetFav,
   removeUser,
   addUser,
   allProducts,
