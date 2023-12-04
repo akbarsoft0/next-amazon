@@ -1,6 +1,5 @@
 "use client";
 import { ProductProps, StateProps } from "@type";
-import React from "react";
 import { useSelector } from "react-redux";
 import Link from "next/link";
 import FavoriteProduct from "@components/FavoriteProduct";

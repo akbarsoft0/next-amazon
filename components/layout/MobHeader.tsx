@@ -5,7 +5,6 @@ import { FaUser, FaRegHeart } from "react-icons/fa";
 import { LuMenu } from "react-icons/lu";
 import { HiOutlineSearch } from "react-icons/hi";
 import Link from "next/link";
-
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { StateProps } from "@type";
@@ -43,7 +42,7 @@ const MobHeader = () => {
         </div>
         <ul className="center gap-3">
           {userInfo ? (
-            <img
+            <Image
               src={userInfo.image}
               alt="user"
               className="w-6 h-6 rounded-full"

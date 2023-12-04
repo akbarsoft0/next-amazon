@@ -60,7 +60,7 @@ const Header = () => {
       {/* sign in */}
       {userInfo ? (
         <div className="between text-xs capitalize p-2 border border-transparent hover:border-white  cursor-pointer">
-          <img
+          <Image
             src={userInfo.image}
             alt="user"
             className="w-8 h-8 rounded-full"
