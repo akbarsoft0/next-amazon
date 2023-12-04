@@ -1,13 +1,13 @@
 "use client";
-import { ProductProps, StateProps } from "@type";
+import React from "react";
 import { useSelector } from "react-redux";
+import { ProductProps, StateProps } from "@type";
 import Link from "next/link";
 import FavoriteProduct from "@components/FavoriteProduct";
 import ResetFav from "@components/ResetFav";
 
 const page = () => {
   const { favoriteData } = useSelector((state: StateProps) => state.next);
-
   return (
     <section className="max-w-screen-2xl mx-auto px-6 grid  gap-10 py-4 ">
       {favoriteData.length > 0 ? (

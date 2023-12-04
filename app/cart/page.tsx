@@ -1,10 +1,10 @@
 "use client";
-import CartProduct from "@components/CartProduct";
-import ResetCart from "@components/ResetCart";
-import { ProductProps, StateProps } from "@type";
 import React from "react";
 import { useSelector } from "react-redux";
 import Link from "next/link";
+import { ProductProps, StateProps } from "@type";
+import CartProduct from "@components/CartProduct";
+import ResetCart from "@components/ResetCart";
 import CartPayment from "@components/CartPayment";
 
 const Cart = () => {
