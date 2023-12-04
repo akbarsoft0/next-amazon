@@ -10,11 +10,12 @@ import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { StateProps } from "@type";
 import { useSession, signIn } from "next-auth/react";
-import { addUser } from "@redux/nextSlice";
+import { addUser, removeUser } from "@redux/nextSlice";
 
 const Header = () => {
   const { data: session } = useSession();
   const dispatch = useDispatch();
+  // dispatch(removeUser());
   useEffect(() => {
     if (session) {
       dispatch(
@@ -25,7 +26,7 @@ const Header = () => {
         })
       );
     }
-  }, [session]);
+  }, [session, dispatch]);
   const { productData, favoriteData, userInfo } = useSelector(
     (e: StateProps) => e.next
   );
@@ -36,7 +37,7 @@ const Header = () => {
         href={"/"}
         className="w-28 h-12 my-auto p-2 border border-transparent hover:border-white cursor-pointer"
       >
-        <Image src={logo} alt="logo" className="" />
+        <Image src={logo} alt="logo" />
       </Link>
       {/* location */}
       <div className="text-xs flex items-center gap-2 border border-transparent hover:border-white p-2  cursor-pointer">

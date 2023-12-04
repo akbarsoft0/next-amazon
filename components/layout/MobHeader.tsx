@@ -25,7 +25,7 @@ const MobHeader = () => {
         })
       );
     }
-  }, [session]);
+  }, [session, dispatch]);
   const { productData, favoriteData, userInfo } = useSelector(
     (e: StateProps) => e.next
   );
